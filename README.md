@@ -2,41 +2,48 @@
     <img alt="GoStack" src="https://rocketseat-cdn.s3-sa-east-1.amazonaws.com/bootcamp-header.png" width="200px" />
 </h1>
 <h1>
-Rocketseat Bootcamp 2020
+  Rocketseat Bootcamp 2020
 </h1>
-Treinamento focado nas linguagens Node.js, ReactJS e React Native.
+<h3>
+  Treinamento focado nas linguagens Node.js, ReactJS e React Native.
+</h3>
 
 <h3 align="center">
   Desafio 1: Conceitos do NodeJS
 </h3>
 
-Crie uma aplicação para armazenar projetos e suas tarefas do zero utilizando Express.
+## :rocket: Sobre o desafio
 
-Rotas
-POST /projects: A rota deve receber id e title dentro do corpo e cadastrar um novo projeto dentro de um array no seguinte formato: { id: "1", title: 'Novo projeto', tasks: [] }; Certifique-se de enviar tanto o ID quanto o título do projeto no formato string com aspas duplas.
+Crie uma aplicação para armazenar projetos e suas tarefas do zero utilizando [Express](https://expressjs.com/pt-br/).
 
-GET /projects: Rota que lista todos projetos e suas tarefas;
+### Rotas
 
-PUT /projects/:id: A rota deve alterar apenas o título do projeto com o id presente nos parâmetros da rota;
+- `POST /projects`: A rota deve receber `id` e `title` dentro do corpo e cadastrar um novo projeto dentro de um array no seguinte formato: `{ id: "1", title: 'Novo projeto', tasks: [] }`; Certifique-se de enviar tanto o ID quanto o título do projeto no formato string com aspas duplas.
 
-DELETE /projects/:id: A rota deve deletar o projeto com o id presente nos parâmetros da rota;
+- `GET /projects`: Rota que lista todos projetos e suas tarefas;
 
-POST /projects/:id/tasks: A rota deve receber um campo title e armazenar uma nova tarefa no array de tarefas de um projeto específico escolhido através do id presente nos parâmetros da rota;
+- `PUT /projects/:id`: A rota deve alterar apenas o título do projeto com o `id` presente nos parâmetros da rota;
 
-Exemplo
-Se eu chamar a rota POST /projects repassando { id: 1, title: 'Novo projeto' } e a rota POST /projects/1/tasks com { title: 'Nova tarefa' }, meu array de projetos deve ficar assim:
+- `DELETE /projects/:id`: A rota deve deletar o projeto com o `id` presente nos parâmetros da rota;
 
-> [
+- `POST /projects/:id/tasks`: A rota deve receber um campo `title` e armazenar uma nova tarefa no array de tarefas de um projeto específico escolhido através do `id` presente nos parâmetros da rota;
+
+### Exemplo
+
+Se eu chamar a rota `POST /projects` repassando `{ id: 1, title: 'Novo projeto' }` e a rota `POST /projects/1/tasks` com `{ title: 'Nova tarefa' }`, meu array de projetos deve ficar assim:
+
+```js
+[
   {
     id: "1",
     title: "Novo projeto",
     tasks: ["Nova tarefa"]
   }
->];
+];
+```
 
-Middlewares
-Crie um middleware que será utilizado em todas rotas que recebem o ID do projeto nos parâmetros da URL que verifica se o projeto com aquele ID existe. Se não existir retorne um erro, caso contrário permita a requisição continuar normalmente;
+### Middlewares
 
-Crie um middleware global chamado em todas requisições que imprime (console.log) uma contagem de quantas requisições foram feitas na aplicação até então;
+- Crie um middleware que será utilizado em todas rotas que recebem o ID do projeto nos parâmetros da URL que verifica se o projeto com aquele ID existe. Se não existir retorne um erro, caso contrário permita a requisição continuar normalmente;
 
-📅 Entrega
+- Crie um middleware global chamado em todas requisições que imprime (`console.log`) uma contagem de quantas requisições foram feitas na aplicação até então;
