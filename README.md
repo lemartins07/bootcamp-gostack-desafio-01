@@ -1,8 +1,14 @@
-# Rocketseat Bootcamp 2020
-
+<h1 align="center">
+    <img alt="GoStack" src="https://rocketseat-cdn.s3-sa-east-1.amazonaws.com/bootcamp-header.png" width="200px" />
+</h1>
+<h1>
+Rocketseat Bootcamp 2020
+</h1>
 Treinamento focado nas linguagens Node.js, ReactJS e React Native.
 
-# desafio 01
+<h3 align="center">
+  Desafio 1: Conceitos do NodeJS
+</h3>
 
 Crie uma aplicação para armazenar projetos e suas tarefas do zero utilizando Express.
 
