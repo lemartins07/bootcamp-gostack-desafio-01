@@ -5,7 +5,7 @@ const server = express();
 server.use(express.json());
 
 //const projects = [];
-//var request_count = 0;
+var request_count = 0;
 
 const projects = [
   { id: "1", title: 'Novo projeto', tasks: [] },
@@ -13,17 +13,34 @@ const projects = [
   { id: "3", title: 'Novo projeto3', tasks: [] }
 ]
 
+// Middlewares 
+function requestCounter(req, res, next){
+  request_count = request_count + 1;
+  console.log(request_count);
+  return next();
+}
+
+server.use(requestCounter);
+
 server.get('/projects', (req, res) => {
   return res.json(projects);
 });
 
 server.post('/projects', (req, res) => {
   const { id, title } = req.body;
+  
+  projects.forEach(e => {
+    if(e.id == id){
+      e.title = title;      
+      return res.status(400).json({ error: 'The project ID already exists!'});
+    }
+  });
+  
   projects.push({
     id,
     title,
     tasks: []
-  });
+  });  
 
   return res.json(projects);
 });
@@ -35,7 +52,6 @@ server.put('/projects/:id', (req, res) => {
   projects.forEach(e => {
     if(e.id == id){
       e.title = title;      
-      return res.json(projects);
     }
   });
     
@@ -49,6 +65,19 @@ server.delete('/projects/:id', (req, res) => {
     
     if(e.id == id){
       projects.splice(i,1);
+    }
+  });
+    
+  return res.json(projects);
+});
+
+server.post('/projects/:id/tasks', (req, res) => {
+  const { id } = req.params;
+  const { title } = req.body;
+
+  projects.forEach(e => {
+    if(e.id == id){
+      e.tasks.push(title);  
     }
   });
     
