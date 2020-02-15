@@ -5,6 +5,7 @@ const server = express();
 server.use(express.json());
 
 //const projects = [];
+//var request_count = 0;
 
 const projects = [
   { id: "1", title: 'Novo projeto', tasks: [] },
@@ -33,7 +34,21 @@ server.put('/projects/:id', (req, res) => {
 
   projects.forEach(e => {
     if(e.id == id){
-      e.title = title;
+      e.title = title;      
+      return res.json(projects);
+    }
+  });
+    
+  return res.json(projects);
+});
+
+server.delete('/projects/:id', (req, res) => {
+  const { id } = req.params;
+
+  projects.forEach((e, i )=> {
+    
+    if(e.id == id){
+      projects.splice(i,1);
     }
   });
     
